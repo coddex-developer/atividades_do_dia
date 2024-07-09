@@ -79,13 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.getElementById('closeBtn');
 
     startLivePreviewButton.addEventListener('click', () => {
-      obfuscateTheme.classList.toggle('opacidade')
-      
+      obfuscateTheme.style.opacity = "10%";
       livePreview.classList.add('sartLivePreviewClass');
     });
 
     closeBtn.addEventListener('click', () => {
-      obfuscateTheme.classList.toggle('opacidade')
+      obfuscateTheme.style.opacity = "100%";
       livePreview.classList.remove('sartLivePreviewClass');
     });
   }

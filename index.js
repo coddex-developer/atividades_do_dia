@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startLivePreviewButton.addEventListener('click', () => {
       obfuscateTheme.classList.add('opacidade')
+      alert("")
       livePreview.classList.add('sartLivePreviewClass');
     });
 

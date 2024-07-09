@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"/>
-    <script src="./index.js" type="module" defer></script>
-    <title>Atividades do Dia-a-Dia</title>
-  </head>
-  <body>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <script src="./index.js" type="module" defer></script>
+  <title>Atividades do Dia-a-Dia</title>
+</head>
+
+<body>
+  
+  <div class="obfuscateTheme">
+    
     <h1>Atividades do Dia-a-Dia</h1>
     <form id="activityForm">
       <label for="">Executantes da atividade:</label>
       <div class="boxButtonsExecutants">
         <button type="button" class="newExecutant">Adicionar outro executante</button>
       </div>
-      <input class="executant" placeholder="Nome:"/>
-      <input class="executant" placeholder="Nome:"/>
+      <input class="executant" placeholder="Nome:" />
+      <input class="executant" placeholder="Nome:" />
       <div class="boxDinamicAddExecutants"></div>
       <div>
         <label for="activityDate">Data: </label>
@@ -31,7 +36,9 @@
       <button type="button" id="saveButton">Salvar</button>
       <button type="button" id="startLivePreviewButton">Pré visualizar</button>
     </form>
-    <div class="livePreview" id="livePreview">
-    </div>
-  </body>
+  </div>
+  <div class="livePreview" id="livePreview">
+  </div>
+</body>
+
 </html>

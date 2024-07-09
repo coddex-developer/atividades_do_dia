@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #e5e5e5;
+  font-family: Sans-Serif;
+}
+
+body h1 {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 12pt;
+}
+
+.newExecutant {
+  background-color: seagreen;
+  color: white;
+  cursor: pointer;
+  font-size: 8pt;
+  font-weight: bolder;
+}
+
+.boxDinamicAddExecutants {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.boxDinamicAddExecutants input {
+  margin-right: .3rem;
+  width: 80%;
+}
+
+.controlTime {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+
+form input, button {
+  height: 40px;
+  border-radius: 10px;
+  border: 0;
+  padding: 3px;
+  background-color: white;
+  cursor: pointer;
+}
+textarea {
+  border-radius: 10px;
+  border: 0;
+  padding: 5px;
+  background-color: white;
+}
+
+.deleteButton {
+  background-color: darkred;
+  color: white;
+  font-size: 8pt;
+  width: 18%;
+}
+
+.livePreview {
+  display: none;
+}
+
+.closeBtn {
+  width: 30px;
+  height: 30px;
+  background-color: purple;
+  font-weight: bolder;
+  color: white;
+  border-radius: 100%;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.sartLivePreviewClass.livePreview {
+  width: 300px;
+  background-color: white;
+  padding: 3rem 1rem;
+  border-radius: 10px;
+  margin: 2rem auto 0 auto;
+  display: block;
+  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}

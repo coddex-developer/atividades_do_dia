@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dynamicExecutants = document.querySelector('.boxDinamicAddExecutants');
   const livePreview = document.getElementById('livePreview');
   const saveButton = document.getElementById('saveButton');
-  const startLivePreviewButton = document.getElementById('startLivePreview');
+  const startLivePreviewButton = document.getElementById('startLivePreviewButton');
 
   // Load saved form data
   loadFormData();

@@ -37,33 +37,4 @@ self.addEventListener('fetch', event => {
               return response;
             }
 
-            // Clona a resposta. Uma resposta é um stream e, assim como a solicitação, só pode ser consumida uma vez. Como queremos consumir a resposta tanto para o cache quanto para o navegador, devemos cloná-la.
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          }
-        );
-      })
-  );
-});
-
-// Atualiza o service worker e remove caches antigos
-self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
+            // Clona a resposta. Uma resposta é um stream e, assim como a solicitação, só pode ser

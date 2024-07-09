@@ -19,9 +19,27 @@ self.addEventListener('install', event => {
 
 self.addEventListener('fetch', event => {
   event.respondWith(
-    fetch(event.request)
-      .catch(() => {
-        return caches.match(event.request);
+    caches.match(event.request)
+      .then(response => {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        // No cache match - fetch from network
+        return fetch(event.request)
+          .then(response => {
+            // Check if we received a valid response
+            if (!response || response.status !== 200 || response.type !== 'basic') {
+              return response;
+            }
+            // Clone the response (as it's a stream) to cache
+            const responseToCache = response.clone();
+            caches.open(CACHE_NAME)
+              .then(cache => {
+                cache.put(event.request, responseToCache);
+              });
+            return response;
+          });
       })
   );
 });

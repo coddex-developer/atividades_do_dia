@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
   newExecutantButton.addEventListener('click', addExecutant);
   form.addEventListener('input', updateLivePreview);
   saveButton.addEventListener('click', saveAndShare);
-  startLivePreviewButton.addEventListener('click', showLivePreview);
 
   function addExecutant() {
     const executantDiv = document.createElement('div');
@@ -66,28 +65,28 @@ document.addEventListener('DOMContentLoaded', () => {
       <br>
       <p><strong>Relatório de ${date}:</strong></p>
       <br>
-      <p><strong>Executantes:</strong><br>${executants.toUpperCase()}</p>
+      <p><strong>Executantes:</strong>
       <br>
-      <p><strong>Horários da atividade:</strong><br>De ${startTime} às ${endTime}</p>
+      ${executants.toUpperCase()}</p>
       <br>
-      <p><strong>Descrição:</strong><br>${description}</p>
+      <p><strong>Horários da atividade:</strong>
+      <br>
+      De ${startTime} às ${endTime}</p>
+      <br>
+      <p><strong>Descrição:</strong> <br>${description}</p>
     `;
 
     const closeBtn = document.getElementById('closeBtn');
-    closeBtn.addEventListener('click', hideLivePreview);
 
-    // Save form data to local storage
-    saveFormData();
-  }
+    startLivePreviewButton.addEventListener('click', () => {
+      obfuscateTheme.style.opacity = "10%";
+      livePreview.classList.add('sartLivePreviewClass');
+    });
 
-  function showLivePreview() {
-    obfuscateTheme.style.opacity = "10%";
-    livePreview.classList.add('sartLivePreviewClass');
-  }
-
-  function hideLivePreview() {
-    obfuscateTheme.style.opacity = "100%";
-    livePreview.classList.remove('sartLivePreviewClass');
+    closeBtn.addEventListener('click', () => {
+      obfuscateTheme.style.opacity = "100%";
+      livePreview.classList.remove('sartLivePreviewClass');
+    });
   }
 
   function saveFormData() {
@@ -123,15 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function saveAndShare() {
-    if (!navigator.onLine) {
-      const options = [
-        { label: 'Salvar', action: saveToFile },
-        { label: 'Copiar para área de transferência', action: copyToClipboard }
-      ];
-      showOfflineOptions(options);
-      return;
-    }
-
     const executants = Array.from(document.querySelectorAll('.executant'))
       .map(input => input.value)
       .filter(value => value.trim() !== '')
@@ -154,63 +144,24 @@ De ${startTime} às ${endTime}
 ${description}
 `;
 
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    if (navigator.share) {
+      navigator.share({
+        title: 'Relatório de Atividade',
+        text: message,
+      })
+      .catch(error => console.log('Error sharing:', error));
+    } else {
+      copyToClipboard(message);
+      alert('Relatório copiado para a área de transferência');
+    }
   }
 
-  function saveToFile() {
-    const blob = new Blob([generateReport()], { type: 'text/plain' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'relatorio.txt';
-    a.click();
-  }
-
-  function copyToClipboard() {
-    const report = generateReport();
-    navigator.clipboard.writeText(report)
-      .then(() => alert('Relatório copiado para a área de transferência'))
-      .catch(err => alert('Erro ao copiar relatório: ', err));
-  }
-
-  function generateReport() {
-    const executants = Array.from(document.querySelectorAll('.executant'))
-      .map(input => input.value)
-      .filter(value => value.trim() !== '')
-      .join(', ');
-    const date = document.getElementById('activityDate').value;
-    const startTime = document.getElementById('startTime').value;
-    const endTime = document.getElementById('endTime').value;
-    const description = document.getElementById('activityDescription').value;
-
-    return `
-Relatório de ${date}:
-
-Executantes:
-${executants.toUpperCase()}
-
-Horários da atividade:
-De ${startTime} às ${endTime}
-
-Descrição:
-${description}
-`;
-  }
-
-  function showOfflineOptions(options) {
-    const modal = document.createElement('div');
-    modal.classList.add('offline-modal');
-
-    options.forEach(option => {
-      const button = document.createElement('button');
-      button.textContent = option.label;
-      button.addEventListener('click', () => {
-        option.action();
-        document.body.removeChild(modal);
-      });
-      modal.appendChild(button);
-    });
-
-    document.body.appendChild(modal);
+  function copyToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
   }
 });

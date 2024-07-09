@@ -144,7 +144,24 @@ De ${startTime} às ${endTime}
 ${description}
 `;
 
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    if (navigator.share) {
+      navigator.share({
+        title: 'Relatório de Atividade',
+        text: message,
+      })
+      .catch(error => console.log('Error sharing:', error));
+    } else {
+      copyToClipboard(message);
+      alert('Relatório copiado para a área de transferência');
+    }
+  }
+
+  function copyToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
   }
 });

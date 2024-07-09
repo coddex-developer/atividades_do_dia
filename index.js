@@ -1,4 +1,3 @@
-// Registrando o Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
@@ -11,7 +10,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// Evento quando o DOM está carregado
 document.addEventListener('DOMContentLoaded', () => {
   const obfuscateTheme = document.querySelector('.obfuscateTheme');
   const form = document.getElementById('activityForm');
@@ -21,7 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const saveButton = document.getElementById('saveButton');
   const startLivePreviewButton = document.getElementById('startLivePreview');
 
-  // Função para adicionar novo executante
+  // Load saved form data
+  loadFormData();
+
+  newExecutantButton.addEventListener('click', addExecutant);
+  form.addEventListener('input', updateLivePreview);
+  saveButton.addEventListener('click', saveAndShare);
+
   function addExecutant() {
     const executantDiv = document.createElement('div');
     executantDiv.classList.add('executantEntry');
@@ -44,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicExecutants.appendChild(executantDiv);
   }
 
-  // Função para atualizar a pré-visualização
   function updateLivePreview() {
     const executants = Array.from(document.querySelectorAll('.executant'))
       .map(input => input.value)
@@ -84,12 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
       obfuscateTheme.style.opacity = "100%";
       livePreview.classList.remove('sartLivePreviewClass');
     });
-
-    // Salvar dados do formulário no armazenamento local
-    saveFormData();
   }
 
-  // Função para salvar dados do formulário no armazenamento local
   function saveFormData() {
     const formData = {
       executants: Array.from(document.querySelectorAll('.executant')).map(input => input.value),
@@ -101,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('formData', JSON.stringify(formData));
   }
 
-  // Função para carregar dados do formulário do armazenamento local
   function loadFormData() {
     const savedData = localStorage.getItem('formData');
     if (savedData) {
@@ -123,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Função para salvar e compartilhar dados do formulário
   function saveAndShare() {
     const executants = Array.from(document.querySelectorAll('.executant'))
       .map(input => input.value)
@@ -150,13 +147,4 @@ ${description}
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   }
-
-  // Carregar dados do formulário ao carregar a página
-  loadFormData();
-
-  // Adicionar listeners aos elementos do formulário
-  newExecutantButton.addEventListener('click', addExecutant);
-  form.addEventListener('input', updateLivePreview);
-  saveButton.addEventListener('click', saveAndShare);
-  startLivePreviewButton.addEventListener('click', updateLivePreview);
 });

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'offline-cache-v8';  // Defina a versão do cache aqui
+const CACHE_NAME = 'offline-cache-v9';  // Defina a versão do cache aqui
 
 document.addEventListener('DOMContentLoaded', () => {
   const versionDisplay = document.getElementById('versionDisplay');
@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 document.getElementById('reloadButton').addEventListener('click', () => {
                   newWorker.postMessage({ action: 'skipWaiting' });
+                  setInterval(function() {
+                    window.navigator.reload();
+                  }, 1000);
                 });
               }
             });

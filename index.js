@@ -9,6 +9,23 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')
       .then(registration => {
         console.log('ServiceWorker registered: ', registration);
+
+        registration.onupdatefound = () => {
+          const installingWorker = registration.installing;
+          installingWorker.onstatechange = () => {
+            if (installingWorker.state === 'installed') {
+              if (navigator.serviceWorker.controller) {
+                // Nova atualização disponível
+                const updateNotification = document.createElement('div');
+                updateNotification.innerText = 'Nova atualização disponível. Recarregue a página para atualizar.';
+                document.body.appendChild(updateNotification);
+                updateNotification.addEventListener('click', () => {
+                  window.location.reload();
+                });
+              }
+            }
+          };
+        };
       })
       .catch(registrationError => {
         console.log('ServiceWorker registration failed: ', registrationError);

@@ -55,10 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function formatDate(dateInput) {
-    const date = new Date(dateInput);
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = monthNames[date.getMonth()];
-    const year = date.getFullYear();
+    const date = new Date(dateInput + 'T00:00:00');
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const month = monthNames[date.getUTCMonth()];
+    const year = date.getUTCFullYear();
     return `${day} ${month} ${year}`;
   }
 

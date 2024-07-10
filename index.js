@@ -1,11 +1,9 @@
 const CACHE_NAME = 'offline-cache-v4';  // Defina a versão do cache aqui
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Exibe a versão do cache no HTML
   const versionDisplay = document.getElementById('versionDisplay');
   versionDisplay.textContent = `Versão: ${CACHE_NAME}`;
 
-  // Mapeamento dos nomes dos meses
   const monthNames = [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -17,12 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(registration => {
           console.log('ServiceWorker registered: ', registration);
 
-          // Verifica por atualizações no service worker
           registration.addEventListener('updatefound', () => {
             const newWorker = registration.installing;
             newWorker.addEventListener('statechange', () => {
               if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                // Nova atualização detectada
                 const updateNotification = document.createElement('div');
                 updateNotification.className = 'update-notification';
                 updateNotification.innerHTML = `
@@ -44,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log('ServiceWorker registration failed: ', registrationError);
         });
 
-      // Ouve mensagens do service worker
       navigator.serviceWorker.addEventListener('message', event => {
         if (event.data.action === 'update') {
           window.location.reload();
@@ -63,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const saveButton = document.getElementById('saveButton');
   const startLivePreviewButton = document.getElementById('startLivePreviewButton');
 
-  // Load saved form data
   loadFormData();
 
   newExecutantButton.addEventListener('click', addExecutant);
@@ -197,7 +191,6 @@ ${executants.toUpperCase()}
 
 *Horários da atividade:*
 De ${startTime} às ${endTime}
-
 *Descrição:*
 ${description}
         `;

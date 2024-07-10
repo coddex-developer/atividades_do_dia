@@ -108,3 +108,15 @@ textarea {
   margin-top: 3rem;
   font-size: 5pt;
 }
+
+.boxVersionAlert {
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  background-color: purple;
+  color: white;
+}
+
+.boxVersionAlert button {
+  margin: 0 auto;
+}

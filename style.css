@@ -120,8 +120,13 @@ textarea {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .boxVersionAlert button {
   margin: 0 auto;
+  background-color: green;
+  padding: .3rem 4rem;
 }

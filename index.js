@@ -1,4 +1,7 @@
-const CACHE_NAME = 'offline-cache-v19';  // Defina a versão do cache aqui
+const CACHE_NAME = 'offline-cache-v20'; 
+
+const infoVersion = document.getElementById("infoVersion");
+infoVersion.textContent = CACHE_NAME;
 
 document.addEventListener('DOMContentLoaded', () => {
   const versionDisplay = document.getElementById('versionDisplay');
@@ -24,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateNotification.innerHTML = `
                 <div class="boxVersionAlert">
                 <h3>Nova versão disponível!</h3>
-                <p id="versionDisplay"></p>
+                <p id="infoVersion"></p>
                 <button id="reloadButton">Recarregar</button>
                 </div>
                 `;

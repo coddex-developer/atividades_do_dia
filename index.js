@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateNotification.className = 'update-notification';
                 updateNotification.innerHTML = `
                 <div class="boxVersionAlert">
-                <3>Nova versão disponível!</3>
+                <h3>Nova versão disponível!</h3>
                 <button id="reloadButton">Recarregar</button>
                 </div>
                 `;

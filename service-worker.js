@@ -1,4 +1,4 @@
-const CACHE_NAME = 'version: 1.0.0.1';  // Atualize a versão do cache aqui
+const CACHE_NAME = 'version: 1.0.0.2';  // Atualize a versão do cache aqui
 const urlsToCache = [
   '/',
   '/index.html',

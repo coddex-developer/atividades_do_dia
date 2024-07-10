@@ -1,4 +1,4 @@
-let CACHE_NAME = 'offline-cache-v23'; 
+const CACHE_NAME = 'offline-cache-v24'; 
 
 document.addEventListener('DOMContentLoaded', () => {
   const versionDisplay = document.getElementById('versionDisplay');

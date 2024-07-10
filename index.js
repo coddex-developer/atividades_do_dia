@@ -1,4 +1,4 @@
-const numberVersion = 27
+const numberVersion = 28
 
 const CACHE_NAME = `offline-cache-v${numberVersion}`; 
 

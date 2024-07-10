@@ -1,4 +1,4 @@
-const CACHE_NAME = 'offline-cache-v6';  // Atualize a versão do cache aqui
+const CACHE_NAME = 'offline-cache-v7';  // Defina a versão do cache aqui
 const urlsToCache = [
   '/',
   '/index.html',
@@ -7,7 +7,6 @@ const urlsToCache = [
   // Adicione outros arquivos que você deseja armazenar em cache
 ];
 
-// Instala o service worker e armazena em cache todos os recursos necessários
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -18,7 +17,6 @@ self.addEventListener('install', event => {
   );
 });
 
-// Intercepta as solicitações de rede e retorna os recursos do cache se disponíveis
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
@@ -26,15 +24,15 @@ self.addEventListener('fetch', event => {
         if (response) {
           return response;
         }
-
         const fetchRequest = event.request.clone();
+
         return fetch(fetchRequest).then(
           response => {
             if (!response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }
-
             const responseToCache = response.clone();
+
             caches.open(CACHE_NAME)
               .then(cache => {
                 cache.put(event.request, responseToCache);
@@ -47,7 +45,6 @@ self.addEventListener('fetch', event => {
   );
 });
 
-// Atualiza o service worker e remove caches antigos
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
@@ -59,11 +56,14 @@ self.addEventListener('activate', event => {
           }
         })
       );
-    }).then(() => {
-      self.clients.claim();
-      self.clients.matchAll().then(clients => {
-        clients.forEach(client => client.postMessage({ action: 'update' }));
-      });
     })
   );
+  return self.clients.claim();
+});
+
+// Listen for skipWaiting message and activate new worker
+self.addEventListener('message', event => {
+  if (event.data.action === 'skipWaiting') {
+    self.skipWaiting();
+  }
 });

@@ -1,39 +1,57 @@
-// Mapeamento dos nomes dos meses
-const monthNames = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-];
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(registration => {
-        console.log('ServiceWorker registered: ', registration);
-
-        registration.onupdatefound = () => {
-          const installingWorker = registration.installing;
-          installingWorker.onstatechange = () => {
-            if (installingWorker.state === 'installed') {
-              if (navigator.serviceWorker.controller) {
-                // Nova atualização disponível
-                const updateNotification = document.createElement('div');
-                updateNotification.innerText = 'Nova atualização disponível. Recarregue a página para atualizar.';
-                document.body.appendChild(updateNotification);
-                updateNotification.addEventListener('click', () => {
-                  window.location.reload();
-                });
-              }
-            }
-          };
-        };
-      })
-      .catch(registrationError => {
-        console.log('ServiceWorker registration failed: ', registrationError);
-      });
-  });
-}
+const CACHE_NAME = 'offline-cache-v4';  // Defina a versão do cache aqui
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Exibe a versão do cache no HTML
+  const versionDisplay = document.getElementById('versionDisplay');
+  versionDisplay.textContent = `Versão: ${CACHE_NAME}`;
+
+  // Mapeamento dos nomes dos meses
+  const monthNames = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+          console.log('ServiceWorker registered: ', registration);
+
+          // Verifica por atualizações no service worker
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                // Nova atualização detectada
+                const updateNotification = document.createElement('div');
+                updateNotification.className = 'update-notification';
+                updateNotification.innerHTML = `
+                  <p>Nova versão disponível. <button id="reloadButton">Recarregar</button></p>
+                `;
+                document.body.appendChild(updateNotification);
+
+                document.getElementById('reloadButton').addEventListener('click', () => {
+                  newWorker.postMessage({ action: 'skipWaiting' });
+                });
+              }
+            });
+          });
+        })
+        .catch(registrationError => {
+          console.log('ServiceWorker registration failed: ', registrationError);
+        });
+
+      // Ouve mensagens do service worker
+      navigator.serviceWorker.addEventListener('message', event => {
+        if (event.data.action === 'update') {
+          window.location.reload();
+        }
+      });
+    });
+  }
+
+  // Resto do seu código existente...
+
   const obfuscateTheme = document.querySelector('.obfuscateTheme');
   const form = document.getElementById('activityForm');
   const newExecutantButton = document.querySelector('.newExecutant');

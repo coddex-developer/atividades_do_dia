@@ -1,4 +1,4 @@
-const CACHE_NAME = 'offline-cache-v4';  // Atualize a versão do cache aqui
+const CACHE_NAME = 'offline-cache-v5';  // Atualize a versão do cache aqui
 const urlsToCache = [
   '/',
   '/index.html',
@@ -23,23 +23,18 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Cache hit - retorna a resposta do cache
         if (response) {
           return response;
         }
-        // Clona a solicitação. Uma solicitação é um stream e só pode ser consumida uma vez. Como queremos consumir a solicitação tanto para o cache quanto para a rede, devemos cloná-la.
-        const fetchRequest = event.request.clone();
 
+        const fetchRequest = event.request.clone();
         return fetch(fetchRequest).then(
           response => {
-            // Verifica se recebemos uma resposta válida
             if (!response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }
 
-            // Clona a resposta. Uma resposta é um stream e, assim como a solicitação, só pode ser consumida uma vez. Como queremos consumir a resposta tanto para o cache quanto para o navegador, devemos cloná-la.
             const responseToCache = response.clone();
-
             caches.open(CACHE_NAME)
               .then(cache => {
                 cache.put(event.request, responseToCache);
@@ -64,6 +59,11 @@ self.addEventListener('activate', event => {
           }
         })
       );
+    }).then(() => {
+      self.clients.claim();
+      self.clients.matchAll().then(clients => {
+        clients.forEach(client => client.postMessage({ action: 'update' }));
+      });
     })
   );
 });

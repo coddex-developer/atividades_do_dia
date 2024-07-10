@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateNotification.innerHTML = `
                 <div class="boxVersionAlert">
                 <h3>Nova versão disponível!</h3>
-                <p>Versão: offline-cache-v${numberVersion++}</p>
+                <p>Versão: offline-cache-v${numberVersion + 1}</p>
                 <button id="reloadButton">Recarregar</button>
                 </div>
                 `;

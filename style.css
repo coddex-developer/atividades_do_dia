@@ -102,3 +102,9 @@ textarea {
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
+
+.versionDisplay {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 5pt;
+}

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'offline-cache-v10';  // Defina a versão do cache aqui
+const CACHE_NAME = 'offline-cache-v11';  // Defina a versão do cache aqui
 
 document.addEventListener('DOMContentLoaded', () => {
   const versionDisplay = document.getElementById('versionDisplay');
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateNotification.className = 'update-notification';
                 updateNotification.innerHTML = `
                 <div class="boxVersionAlert">
-                <p>Nova versão disponível!</p>
+                <3>Nova versão disponível!</3>
                 <button id="reloadButton">Recarregar</button>
                 </div>
                 `;
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 document.getElementById('reloadButton').addEventListener('click', () => {
                   newWorker.postMessage({ action: 'skipWaiting' });
-                  setInterval(function() {
+                  setTimeout(() => {
                     window.navigator.reload();
                   }, 100);
                 });

@@ -1,4 +1,4 @@
-let CACHE_NAME = 'offline-cache-v20'; 
+let CACHE_NAME = 'offline-cache-v21'; 
 
 let infVersion = document.getElementById("infoVersion");
 infVersion.textContent = CACHE_NAME;

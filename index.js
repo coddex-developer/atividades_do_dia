@@ -1,4 +1,4 @@
-const numberVersion = 28
+const numberVersion = 29
 
 const CACHE_NAME = `offline-cache-v${numberVersion}`; 
 
@@ -197,6 +197,7 @@ ${executants.toUpperCase()}
 
 *Horários da atividade:*
 De ${startTime} às ${endTime}
+
 *Descrição:*
 ${description}
         `;

@@ -113,7 +113,7 @@ textarea {
   width: 300px;
   height: 300px;
   text-align: center;
-  background-color: purple;
+  background-color: #292929;
   color: white;
   position: absolute;
   top: 50%;
@@ -121,12 +121,14 @@ textarea {
   transform: translate(-50%, -50%);
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .boxVersionAlert button {
   margin: 0 auto;
-  background-color: green;
+  background-color: seagreen;
+  font-weight: bold;
   padding: .3rem 4rem;
 }

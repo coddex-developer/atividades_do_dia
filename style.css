@@ -11,7 +11,7 @@ body {
   height: 100vh;
   background-color: #e5e5e5;
   font-family: "Fredoka", sans-serif;
-  padding: 0 1rem;
+  padding: 0 .3rem 1rem .3rem;
 }
 
 body h1 {
@@ -117,7 +117,7 @@ textarea {
 
 .sartLivePreviewClass.livePreview {
   width: 100%;
-  max-width: 400px;
+  max-width: 360px;
   background-color: white;
   padding: 3rem 1rem;
   border-radius: 5px;
@@ -133,14 +133,6 @@ textarea {
 
 .textLive {
   white-space: pre-wrap;
-  display: block;
-  background-color: purple;
-}
-
-.versionDisplay {
-  text-align: center;
-  margin-top: 3rem;
-  font-size: 5pt;
 }
 
 .boxVersionAlert {
@@ -167,4 +159,10 @@ textarea {
   font-weight: bold;
   padding: .3rem 4rem;
   color: white;
+}
+
+.versionDisplay {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 7pt;
 }

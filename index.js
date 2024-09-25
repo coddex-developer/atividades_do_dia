@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
   versionDisplay.textContent = `Versão: ${CACHE_NAME}`;
 
   const monthNames = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    "01", "02", "03", "04", "05", "06",
+    "07", "08", "09", "10", "11", "12"
   ];
 
   if ('serviceWorker' in navigator) {
@@ -129,18 +129,22 @@ document.addEventListener('DOMContentLoaded', () => {
             <br>
             De ${startTime} às ${endTime}</p>
             <br>
-            <p><strong>Descrição:</strong> <br>${description}</p>
+            <strong>Descrição:</strong>
+            <br>
+            <p class="textLive">${description}</p>
         `;
 
     const closeBtn = document.getElementById('closeBtn');
 
     startLivePreviewButton.addEventListener('click', () => {
-      obfuscateTheme.style.opacity = "10%";
+      obfuscateTheme.style.opacity = "0%";
+      obfuscateTheme.style.display = 'none'
       livePreview.classList.add('sartLivePreviewClass');
     });
 
     closeBtn.addEventListener('click', () => {
       obfuscateTheme.style.opacity = "100%";
+      obfuscateTheme.style.display = 'block'
       livePreview.classList.remove('sartLivePreviewClass');
     });
   }

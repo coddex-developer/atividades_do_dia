@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -8,12 +10,19 @@ body {
   width: 100%;
   height: 100vh;
   background-color: #e5e5e5;
-  font-family: Sans-Serif;
+  font-family: "Fredoka", sans-serif;
+  padding: 0 1rem;
 }
 
 body h1 {
   text-align: center;
   margin: 2rem 0;
+}
+
+.obfuscateTheme {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 form {
@@ -50,7 +59,8 @@ form {
   gap: .7rem;
 }
 
-form input, button {
+form input,
+button {
   height: 40px;
   border-radius: 10px;
   border: 0;
@@ -58,10 +68,18 @@ form input, button {
   background-color: white;
   cursor: pointer;
 }
+
+.dataInput {
+  width: 100%;
+  display: block;
+}
+
 textarea {
+  width: 100%;
+  height: 300px;
   border-radius: 10px;
   border: 0;
-  padding: 5px;
+  padding: 7px;
   background-color: white;
 }
 
@@ -77,22 +95,32 @@ textarea {
 }
 
 .closeBtn {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   background-color: purple;
   font-weight: bolder;
   color: white;
-  border-radius: 100%;
+  border-radius: 5px;
   position: absolute;
   top: 3px;
   right: 3px;
+  transition: .4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.closeBtn:hover {
+  background-color: rgb(130, 70, 189);
 }
 
 .sartLivePreviewClass.livePreview {
-  width: 300px;
+  width: 100%;
+  max-width: 400px;
   background-color: white;
   padding: 3rem 1rem;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 2rem auto 0 auto;
   display: block;
   position: relative;
@@ -101,6 +129,12 @@ textarea {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
+}
+
+.textLive {
+  white-space: pre-wrap;
+  display: block;
+  background-color: purple;
 }
 
 .versionDisplay {

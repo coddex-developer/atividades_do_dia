@@ -18,12 +18,12 @@
       <div class="boxButtonsExecutants">
         <button type="button" class="newExecutant">Adicionar outro executante</button>
       </div>
-      <input class="executant" placeholder="Nome:" value="Gabriel"/>
-      <input class="executant" placeholder="Nome:" value="Fábio"/>
+      <input class="executant" placeholder="Nome:" value="Gabriel" />
+      <input class="executant" placeholder="Nome:" value="Fábio" />
       <div class="boxDinamicAddExecutants"></div>
       <div>
         <label for="activityDate">Data: </label>
-        <input type="date" id="activityDate" placeholder="Data" />
+        <input type="date" id="activityDate"  class="dataInput" placeholder="Data" />
       </div>
       <div class="controlTime">
         <label for="startTime">De </label>
@@ -32,7 +32,8 @@
         <input type="time" id="endTime" value="" />
       </div>
       <label for="activityDescription">Descrição da atividade:</label>
-      <textarea id="activityDescription" rows="8" cols="40" placeholder="Digite aqui a atividade ou ocorrencia..."></textarea>
+      <textarea id="activityDescription" rows="8" cols="40"
+        placeholder="Digite aqui a atividade ou ocorrencia..."></textarea>
       <button type="button" id="saveButton">Salvar</button>
       <button type="button" id="startLivePreviewButton">Pré visualizar</button>
     </form>

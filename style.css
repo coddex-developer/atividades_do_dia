@@ -246,7 +246,7 @@ textarea {
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(6px);
     z-index: 1000;
-    gap: 6rem;
+    gap: 4rem;
   }
 
   .menu li a {

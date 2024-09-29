@@ -248,8 +248,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
   const menu = document.getElementById("menu")
   const installButton = document.createElement('li');
   installButton.textContent = 'Instalar App';
-  document.body.appendChild(installButton);
-
   menu.appendChild(installButton)
 
   installButton.addEventListener('click', () => {

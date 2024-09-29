@@ -1,4 +1,4 @@
-const numberVersion = 40
+const numberVersion = 41
 
 const toggleMenu = document.getElementById("nav");
 
@@ -245,10 +245,12 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   // Stash the event so it can be triggered later.
   deferredPrompt = e;
-
+  const menu = document.getElementById("menu")
   const installButton = document.createElement('button');
-  installButton.textContent = 'Instalar Aplicativo';
+  installButton.textContent = 'Instalar App';
   document.body.appendChild(installButton);
+
+  menu.appendChild(installButton)
 
   installButton.addEventListener('click', () => {
     // Show the install prompt

@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateNotification.innerHTML = `
                 <div class="boxVersionAlert">
                 <h3>Nova versão disponível!</h3>
-                <p>Versão: offline-cache-v${numberVersion + 2}</p>
+                <p>Versão: offline-cache-v${numberVersion + 1}</p>
                 <p>✓ Correções e melhorias</p>
                 <p>✓ Função para acesso OffLine</p>
                 <p>✓ Menu de navegação para suporte</p>

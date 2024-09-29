@@ -246,7 +246,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   // Stash the event so it can be triggered later.
   deferredPrompt = e;
   const menu = document.getElementById("menu")
-  const installButton = document.createElement('button');
+  const installButton = document.createElement('li');
   installButton.textContent = 'Instalar App';
   document.body.appendChild(installButton);
 

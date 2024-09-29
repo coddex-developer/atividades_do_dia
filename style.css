@@ -152,10 +152,11 @@ textarea {
 }
 
 .boxVersionAlert {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  max-width: 390px;
+  padding: 3rem 1rem;
   text-align: center;
-  background-color: #292929;
+  background-color: darkblue;
   color: white;
   position: absolute;
   top: 50%;
@@ -166,12 +167,12 @@ textarea {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 .boxVersionAlert button {
   margin: 0 auto;
-  background-color: seagreen;
+  background-color: orangered;
   font-weight: bold;
   padding: .3rem 4rem;
   color: white;

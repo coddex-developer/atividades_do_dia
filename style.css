@@ -35,7 +35,7 @@ form {
 }
 
 .newExecutant {
-  background-color: seagreen;
+  background-color: dodgerblue;
   color: white;
   cursor: pointer;
   font-size: 8pt;
@@ -90,6 +90,20 @@ textarea {
   width: 18%;
 }
 
+.saveButton {
+  background-color: dodgerblue;
+  font-weight: 700;
+  color: white;
+}
+
+.startLivePreviewButton {
+  font-weight: 700;
+}
+
+.newExecutant i, .saveButton i, .startLivePreviewButton i {
+  font-size: 16pt;
+}
+
 .livePreview {
   display: none;
 }
@@ -97,7 +111,7 @@ textarea {
 .closeBtn {
   width: 28px;
   height: 28px;
-  background-color: purple;
+  background-color: dodgerblue;
   font-weight: bolder;
   color: white;
   border-radius: 5px;
@@ -112,7 +126,7 @@ textarea {
 }
 
 .closeBtn:hover {
-  background-color: rgb(130, 70, 189);
+  background-color: #ccc;
 }
 
 .sartLivePreviewClass.livePreview {

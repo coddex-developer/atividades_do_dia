@@ -1,4 +1,4 @@
-const numberVersion = 35
+const numberVersion = 36
 
 const CACHE_NAME = `offline-cache-v${numberVersion}`; 
 
@@ -26,9 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateNotification.innerHTML = `
                 <div class="boxVersionAlert">
                 <h3>Nova versão disponível!</h3>
-                <p>Versão: offline-cache-v${numberVersion + 1}</p>
+                <p>Versão: offline-cache-v${numberVersion + 2}</p>
                 <p>✓ Correções e melhorias</p>
-                <button id="reloadButton">Recarregar</button>
+                <p>✓ Função para acesso OffLine</p>
+                <button id="reloadButton">Atualizar Agora</button>
                 </div>
                 `;
                 document.body.appendChild(updateNotification);

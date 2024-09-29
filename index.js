@@ -267,3 +267,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
     });
   });
 });
+
+document.getElementById("sobre").addEventListener('click', () => {
+  alert(`Este aplicativo permite que você descreva e organize o seu dia de maneira simples e eficiente. Ele funciona como um formatador de texto, ajudando a salvar e registrar suas atividades diárias com clareza e facilidade.
+
+Qualquer duvida ou se encontrar bugs no proojeto ficarei feliz em receber seu fedback.
+  `)
+})

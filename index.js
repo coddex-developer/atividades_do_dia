@@ -1,5 +1,12 @@
 const numberVersion = 38
 
+const toggleMenu = document.getElementById("nav");
+
+  toggleMenu.addEventListener("click", function () {
+    toggleMenu.classList.toggle("action");
+  });
+
+
 const CACHE_NAME = `offline-cache-v${numberVersion}`; 
 
 document.addEventListener('DOMContentLoaded', () => {

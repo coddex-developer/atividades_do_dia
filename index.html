@@ -12,6 +12,22 @@
 </head>
 
 <body>
+  <header>
+    <a href="#">
+      <img id="logo" alt="Logo" />
+    </a>
+    <nav class="nav" id="nav">
+      <span class="menuButton"></span>
+      <ul class="menu">
+        <li>
+          <a href="https://wa.me/+5561981323772"><i class="bi bi-whatsapp"></i> Suporte </a>
+        </li>
+        <li>
+          <a href="#"><i class="bi bi-chat-square-text"></i> Sobre </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
   <div class="obfuscateTheme">
     <h1>Atividades do Dia-a-Dia</h1>
     <form id="activityForm">
@@ -24,7 +40,7 @@
       <div class="boxDinamicAddExecutants"></div>
       <div>
         <label for="activityDate">Data: </label>
-        <input type="date" id="activityDate"  class="dataInput" placeholder="Data" />
+        <input type="date" id="activityDate" class="dataInput" placeholder="Data" />
       </div>
       <div class="controlTime">
         <label for="startTime">De </label>
@@ -36,7 +52,8 @@
       <textarea id="activityDescription" rows="8" cols="40"
         placeholder="Digite aqui a atividade ou ocorrencia..."></textarea>
       <button type="button" id="saveButton" class="saveButton"><i class="bi bi-folder-plus"></i> Salvar</button>
-      <button type="button" id="startLivePreviewButton" class="startLivePreviewButton"><i class="bi bi-view-list"></i> Pré visualizar</button>
+      <button type="button" id="startLivePreviewButton" class="startLivePreviewButton"><i class="bi bi-view-list"></i>
+        Pré visualizar</button>
     </form>
   </div>
   <div class="livePreview" id="livePreview"></div>

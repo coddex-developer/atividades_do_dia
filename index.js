@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>✓ Correções e melhorias</p>
                 <p>✓ Função para acesso OffLine</p>
                 <p>✓ Menu de navegação para suporte</p>
+                <p>✓ Opção de instalação de app em disposistivos compativeis</p>
                 <button id="reloadButton">Atualizar Agora</button>
                 </div>
                 `;

@@ -1,4 +1,4 @@
-const numberVersion = 38
+const numberVersion = 39
 
 const toggleMenu = document.getElementById("nav");
 
@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Versão: offline-cache-v${numberVersion + 2}</p>
                 <p>✓ Correções e melhorias</p>
                 <p>✓ Função para acesso OffLine</p>
+                <p>✓ Menu de navegação para suporte</p>
                 <button id="reloadButton">Atualizar Agora</button>
                 </div>
                 `;

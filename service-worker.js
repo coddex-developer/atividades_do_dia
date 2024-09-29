@@ -1,4 +1,4 @@
-const CACHE_NAME = 'offline-cache-v42';  // Defina a versão do cache aqui
+const CACHE_NAME = 'offline-cache-v43';  // Defina a versão do cache aqui
 const urlsToCache = [
   '/',
   '/index.html',

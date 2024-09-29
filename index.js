@@ -1,4 +1,4 @@
-const numberVersion = 42
+const numberVersion = 43
 
 const toggleMenu = document.getElementById("nav");
 
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const deleteButton = document.createElement('button');
     deleteButton.type = 'button';
-    deleteButton.textContent = 'Remover';
+    deleteButton.innerHTML = `<i class="bi bi-trash3"></i> <span>Remover</span>`;
     deleteButton.classList.add('deleteButton');
     deleteButton.addEventListener('click', () => {
       dynamicExecutants.removeChild(executantDiv);
@@ -248,7 +248,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
   deferredPrompt = e;
   const menu = document.getElementById("menu")
   const installButton = document.createElement('li');
-  installButton.textContent = 'Instalar App';
+  installButton.className = "btnDownload"
+  installButton.innerHTML = `<i class="bi bi-download"></i> <span>Baixar App</span>`;
   menu.appendChild(installButton)
 
   installButton.addEventListener('click', () => {

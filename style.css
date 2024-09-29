@@ -55,7 +55,9 @@ header {
   color: dodgerblue;
 }
 
-
+.btnDownload {
+  color: white;
+}
 
 .obfuscateTheme {
   width: 100%;
@@ -201,6 +203,7 @@ textarea {
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 100;
   transform: translate(-50%, -50%);
   border-radius: 10px;
   display: flex;
@@ -247,6 +250,11 @@ textarea {
     backdrop-filter: blur(6px);
     z-index: 1000;
     gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .menu::-webkit-scrollbar-track {
+    background: transparent;
   }
 
   .menu li a {
@@ -261,7 +269,8 @@ textarea {
   }
 
   #nav.action .menu {
-    height: 10em;
+    height: 15em;
+    position: fixed;
     visibility: visible;
     overflow-y: scroll;
   }
@@ -301,17 +310,5 @@ textarea {
 
   .obfuscateTheme {
     margin: 80px auto 0 auto;
-  }
-}
-
-@media (max-width: 347px) {
-  .menu {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-  }
-
-  #nav.action .menu {
-    height: calc(100vh - 60px);
   }
 }

@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const deleteButton = document.createElement('button');
     deleteButton.type = 'button';
-    deleteButton.innerHTML = `<i class="bi bi-trash3"></i> <span>Remover</span>`;
+    deleteButton.innerHTML = `<i class="bi bi-trash3"></i>`;
     deleteButton.classList.add('deleteButton');
     deleteButton.addEventListener('click', () => {
       dynamicExecutants.removeChild(executantDiv);

@@ -51,6 +51,11 @@ header {
   transition: 0.7s;
 }
 
+.bi-trash3 {
+  font-weight: 700;
+  font-size: 13pt;
+}
+
 .menu li a:hover {
   color: dodgerblue;
 }

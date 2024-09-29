@@ -1,4 +1,4 @@
-const numberVersion = 44
+const numberVersion = 45
 
 const toggleMenu = document.getElementById("nav");
 

@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const deleteButton = document.createElement('button');
     deleteButton.type = 'button';
-    deleteButton.textContent = 'Excluir';
+    deleteButton.textContent = 'Remover';
     deleteButton.classList.add('deleteButton');
     deleteButton.addEventListener('click', () => {
       dynamicExecutants.removeChild(executantDiv);

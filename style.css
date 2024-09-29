@@ -229,6 +229,10 @@ textarea {
     overflow-x: hidden;
   }
 
+.logo {
+  width: 45px;
+}
+
   .menu {
     position: fixed;
     width: 100%;

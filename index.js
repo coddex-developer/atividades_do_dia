@@ -1,6 +1,6 @@
 const numberVersion = 46
 
-const getTags = []
+let getTags = []
 
 const toggleMenu = document.getElementById("nav");
 
@@ -38,14 +38,20 @@ function addTagToDisplay(tagName) {
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "X";
   deleteButton.classList.add("delete-button");
+  deleteButton.id = tagName;
   tagItem.appendChild(deleteButton);
 
   // Adiciona o item ao display
   display.appendChild(tagItem);
 
   // Evento de exclusão
-  deleteButton.addEventListener("click", () => {
+  deleteButton.addEventListener("click", (event) => {
     display.removeChild(tagItem);
+    const btnDeletTarget = event.currentTarget.id
+    const tagIndex = getTags.indexOf(btnDeletTarget);
+    if (tagIndex !== -1) {
+        getTags.splice(tagIndex, 1);
+    }
   });
 }
 
@@ -63,8 +69,9 @@ selectTag.forEach(sltg => {
     // Verifica se a tag já foi adicionada
     if (selectedTag && !Array.from(display.children).some(child => child.textContent.includes(selectedTag))) {
       addTagToDisplay(selectedTag);
-      getTags.push(event.target.value).toString()
-    }
+      getTags.push(selectedTag).toString()
+      return
+    } 
   });
 });
 

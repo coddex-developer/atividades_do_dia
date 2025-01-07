@@ -2,12 +2,67 @@ const numberVersion = 46
 
 const toggleMenu = document.getElementById("nav");
 
-  toggleMenu.addEventListener("click", function () {
-    toggleMenu.classList.toggle("action");
+toggleMenu.addEventListener("click", function () {
+  toggleMenu.classList.toggle("action");
+});
+
+
+const CACHE_NAME = `offline-cache-v${numberVersion}`;
+
+
+import tags from "./tags.js";
+const selectTag = document.querySelectorAll("#selectTag");
+const display = document.querySelector("#display");
+
+function createOptions(el) {
+  selectTag.forEach(sltg => {
+    const option = document.createElement("option");
+    option.textContent = el;
+    sltg.appendChild(option);
   });
+}
 
+function addTagToDisplay(tagName) {
+  // Cria o item de tag no display
+  const tagItem = document.createElement("div");
+  tagItem.classList.add("tag-item");
 
-const CACHE_NAME = `offline-cache-v${numberVersion}`; 
+  // Cria o nome da tag
+  const tagNameElement = document.createElement("span");
+  tagNameElement.textContent = tagName;
+  tagItem.appendChild(tagNameElement);
+
+  // Cria o botão X para excluir
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "X";
+  deleteButton.classList.add("delete-button");
+  tagItem.appendChild(deleteButton);
+
+  // Adiciona o item ao display
+  display.appendChild(tagItem);
+
+  // Evento de exclusão
+  deleteButton.addEventListener("click", () => {
+    display.removeChild(tagItem);
+  });
+}
+
+// Adiciona as opções no select
+tags.forEach(tag => {
+  createOptions(tag);
+});
+
+// Adiciona a funcionalidade de mostrar e excluir as tags selecionadas
+selectTag.forEach(sltg => {
+  sltg.addEventListener("change", (event) => {
+    const selectedTag = event.target.value;
+
+    // Verifica se a tag já foi adicionada
+    if (selectedTag && !Array.from(display.children).some(child => child.textContent.includes(selectedTag))) {
+      addTagToDisplay(selectedTag);
+    }
+  });
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const versionDisplay = document.getElementById('versionDisplay');
@@ -33,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateNotification.innerHTML = `
                 <div class="boxVersionAlert">
                 <h3>Nova versão disponível!</h3>
-                <p>Versão: offline-cache-v${numberVersion + 1}</p>
                 <p>✓ Correções e melhorias</p>
                 <p>✓ Função para acesso OffLine</p>
                 <p>✓ Menu de navegação para suporte</p>
@@ -138,6 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <p><strong>Horários da atividade:</strong>
             <br>
             De ${startTime} às ${endTime}</p>
+            <br>
+            <strong>Tags:</strong>
             <br>
             <strong>Descrição:</strong>
             <br>
@@ -269,8 +325,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 document.getElementById("sobre").addEventListener('click', () => {
-  alert(`Este aplicativo permite que você descreva e organize o seu dia de maneira simples e eficiente. Ele funciona como um formatador de texto, ajudando a salvar e registrar suas atividades diárias com clareza e facilidade.
+  alert(`Este aplicativo permite que você organize e registre seu dia de forma prática e eficiente. Com ele, você pode descrever suas atividades diárias por meio de um formatador de texto intuitivo, facilitando o acompanhamento e o salvamento das informações de maneira clara e organizada.
 
-Qualquer duvida ou se encontrar bugs no proojeto ficarei feliz em receber seu fedback.
-  `)
+Caso tenha dúvidas ou encontre algum problema, envie seu feedback. Sua opinião é muito importante para melhorarmos ainda mais o aplicativo!`)
 })

@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
             De ${startTime} às ${endTime}</p>
             <br>
             <strong>Tags:</strong>
-            <p>${getTags.join()}</p>
+            <p>${getTags.join(", ")}</p>
             <br>
             <strong>Descrição:</strong>
             <br>
@@ -273,6 +273,9 @@ ${executants.toUpperCase()}
 
 *Horários da atividade:*
 De ${startTime} às ${endTime}
+
+*Tags:*
+${getTags.join(", ")}
 
 *Descrição:*
 ${description}

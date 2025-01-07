@@ -1,5 +1,7 @@
 const numberVersion = 46
 
+const getTags = []
+
 const toggleMenu = document.getElementById("nav");
 
 toggleMenu.addEventListener("click", function () {
@@ -53,20 +55,22 @@ tags.forEach(tag => {
 });
 
 // Adiciona a funcionalidade de mostrar e excluir as tags selecionadas
+
 selectTag.forEach(sltg => {
   sltg.addEventListener("change", (event) => {
     const selectedTag = event.target.value;
-
+    
     // Verifica se a tag já foi adicionada
     if (selectedTag && !Array.from(display.children).some(child => child.textContent.includes(selectedTag))) {
       addTagToDisplay(selectedTag);
+      getTags.push(event.target.value).toString()
     }
   });
 });
 
 document.addEventListener('DOMContentLoaded', () => {
   const versionDisplay = document.getElementById('versionDisplay');
-  versionDisplay.textContent = `Versão: ${CACHE_NAME}`;
+  versionDisplay.textContent = `CoddeX`;
 
   const monthNames = [
     "/01/", "/02/", "/03/", "/04/", "/05/", "/06/",
@@ -194,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
             De ${startTime} às ${endTime}</p>
             <br>
             <strong>Tags:</strong>
+            <p>${getTags.join()}</p>
             <br>
             <strong>Descrição:</strong>
             <br>

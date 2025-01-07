@@ -196,6 +196,8 @@ textarea {
 
 .textLive {
   white-space: pre-wrap;
+  height: 160px;
+  overflow-y: scroll;
 }
 
 .boxVersionAlert {

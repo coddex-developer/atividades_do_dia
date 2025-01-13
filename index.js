@@ -50,7 +50,7 @@ function addTagToDisplay(tagName) {
     const btnDeletTarget = event.currentTarget.id
     const tagIndex = getTags.indexOf(btnDeletTarget);
     if (tagIndex !== -1) {
-        getTags.splice(tagIndex, 1);
+      getTags.splice(tagIndex, 1);
     }
   });
 }
@@ -65,19 +65,19 @@ tags.forEach(tag => {
 selectTag.forEach(sltg => {
   sltg.addEventListener("change", (event) => {
     const selectedTag = event.target.value;
-    
+
     // Verifica se a tag já foi adicionada
     if (selectedTag && !Array.from(display.children).some(child => child.textContent.includes(selectedTag))) {
       addTagToDisplay(selectedTag);
       getTags.push(selectedTag).toString()
       return
-    } 
+    }
   });
 });
 
 document.addEventListener('DOMContentLoaded', () => {
   const versionDisplay = document.getElementById('versionDisplay');
-  versionDisplay.textContent = `CoddeX`;
+  versionDisplay.textContent = `CoddeX Developer`;
 
   const monthNames = [
     "/01/", "/02/", "/03/", "/04/", "/05/", "/06/",

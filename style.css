@@ -202,22 +202,33 @@ textarea {
 
 .boxVersionAlert {
   width: 100%;
-  max-width: 390px;
+  height: 100vh;
   padding: 3rem 1rem;
   text-align: center;
-  background-color: darkblue;
+  background-color: #292929;
   color: white;
-  position: absolute;
+  position: fixed;
+  overflow-y: hidden;
   top: 50%;
   left: 50%;
   z-index: 100;
   transform: translate(-50%, -50%);
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+.containerText {
+  padding: 0 3rem;
+  margin: 0 auto;
+}
+
+.containerText p {
+  text-align: left;
+  padding: .7rem 0;
+  border-bottom: 1px solid white;
 }
 
 .boxVersionAlert button {
@@ -243,9 +254,10 @@ textarea {
 
   .menu {
     position: fixed;
-    width: 100%;
-    height: 0;
+    width: 200px;
+    height: -5%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     top: 80px;
@@ -253,11 +265,11 @@ textarea {
     visibility: hidden;
     overflow: hidden;
     transition: 0.6s;
-    padding: 0 1rem;
+    border-radius: 3px;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(6px);
     z-index: 1000;
-    gap: 4rem;
+    gap: 1.7rem;
   }
 
   .menu::-webkit-scrollbar-track {
@@ -265,21 +277,22 @@ textarea {
   }
 
   .menu li a {
-    width: 100%;
+    width: 190px;
+    display: block;
     font-size: 19px;
     font-weight: 500;
     color: white;
+    text-align: center;
   }
 
   .menu li a:hover {
-    color: dodgerblue;
+    background-color: #292929;
   }
 
   #nav.action .menu {
-    height: 15em;
+    height: 200px;
     position: fixed;
     visibility: visible;
-    overflow-y: scroll;
   }
 
   .menuButton {

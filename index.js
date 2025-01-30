@@ -99,10 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateNotification.innerHTML = `
                 <div class="boxVersionAlert">
                 <h3>Nova versão disponível!</h3>
-                <p>✓ Correções e melhorias</p>
-                <p>✓ Função para acesso OffLine</p>
-                <p>✓ Menu de navegação para suporte</p>
-                <p>✓ Opção de instalação de app em disposistivos compativeis</p>
+                <div class="containerText">
+                  <p>✓ Correções e melhorias</p>
+                  <p>✓ Função para acesso OffLine</p>
+                  <p>✓ Menu de navegação para suporte</p>
+                  <p>✓ Opção de instalação de app em disposistivos compativeis</p>
+                </div>
                 <button id="reloadButton">Atualizar Agora</button>
                 </div>
                 `;

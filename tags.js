@@ -1,4 +1,5 @@
-const tags = [ 
+const tags = [
+  "CA-01", "CA-02", "CA-03",
   "HSS AC-01", "HSS AC-02", "HSS AC-03", "HSS AC-04", "HSS AC-05", "HSS AC-06",
   "AC-01", "AC-02", "AC-03", "AC-04", "AC-05", "AC-06", "AC-07", "AC-08", "AC-09", "AC-010",
   "AC-011", "AC-012", "AC-013", "AC-014", "AC-015", "AC-016", "AC-017", "AC-018", "AC-019", "AC-020",

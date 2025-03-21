@@ -1,11 +1,10 @@
-const CACHE_NAME = 'offline-cache-v1.3.3';
+const CACHE_NAME = 'offline-cache-v1.3.4';
 const urlsToCache = [
   '/',
   '/index.html',
   '/style.css',
   '/index.js',
   'tags.js'
-  // Adicione outros arquivos que você deseja armazenar em cache
 ];
 
 self.addEventListener('install', event => {

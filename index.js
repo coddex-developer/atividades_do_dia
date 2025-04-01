@@ -307,6 +307,7 @@ ${description}
         icon: "error",
         title: "ADICIONE A DATA ANTES DE SALVAR!"
       });
+      dateInput.focus();
       return
     }
 

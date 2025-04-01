@@ -126,6 +126,7 @@ textarea {
   border-radius: 10px;
   border: 0;
   padding: 7px;
+  text-transform: uppercase;
   background-color: white;
 }
 

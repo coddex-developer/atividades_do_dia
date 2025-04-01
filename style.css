@@ -130,7 +130,7 @@ textarea {
 }
 
 .deleteButton {
-  background-color: rgb(215, 41, 41);
+  background-color: #E61C2B;
   color: white;
   font-weight: 700;
   font-size: 9pt;
@@ -240,7 +240,7 @@ textarea {
 
 .boxVersionAlert button {
   margin: 0 auto;
-  background-color: orangered;
+  background-color: #E61C2B;
   font-weight: bold;
   padding: .3rem 4rem;
   color: white;
@@ -399,7 +399,7 @@ textarea {
 }
 
 .delete-button {
-  background: red;
+  background: #E61C2B;
   color: white;
   border: none;
   padding: 5px 10px;

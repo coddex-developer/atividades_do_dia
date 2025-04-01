@@ -302,6 +302,14 @@ ${getTags.join(", ")}
 ${description}
         `;
 
+    if (formattedDate.includes("NaN undefined NaN")) {
+      Toast.fire({
+        icon: "error",
+        title: "ADICIONE A DATA ANTES DE SALVAR!"
+      });
+      return
+    }
+
     if (navigator.share) {
       navigator.share({
         title: 'Relatório de Atividade',
@@ -314,29 +322,29 @@ ${description}
     }
   }
 
-document.getElementById("savePDF").addEventListener("click", () => {
-  
- const confirmSavePdf = confirm("Deseja  Salvar esse arquivo?")
- 
- if(confirmSavePdf === false) {
-      Toast.fire({
-      icon: "info",
-      title: "AÇÃO FOI CANCELADA"
-    });
-    return
- };
- 
-  const { jsPDF } = window.jspdf; const doc = new jsPDF();
+  document.getElementById("savePDF").addEventListener("click", () => {
 
-// Capturar o conteúdo desejado
-const executants = Array.from(document.querySelectorAll('.executant'))
+    const confirmSavePdf = confirm("Deseja  Salvar esse arquivo?")
+
+    if (confirmSavePdf === false) {
+      Toast.fire({
+        icon: "info",
+        title: "AÇÃO FOI CANCELADA"
+      });
+      return
+    };
+
+    const { jsPDF } = window.jspdf; const doc = new jsPDF();
+
+    // Capturar o conteúdo desejado
+    const executants = Array.from(document.querySelectorAll('.executant'))
       .map(input => input.value)
       .filter(value => value.trim() !== '')
       .join(', ');
 
     const dateInput = document.getElementById('activityDate').value;
     const formattedDate = formatDate(dateInput);
-    
+
     const startTime = document.getElementById('startTime').value;
     const endTime = document.getElementById('endTime').value;
     const description = document.getElementById('activityDescription').value;
@@ -356,32 +364,32 @@ Descrição:
 ${description}
         `;
 
-// Criar o cabeçalho
-doc.text(`Relatório Diario Operacional`, 10, 10)
-doc.text(`Data: ${formattedDate}`, 10, 20)
+    // Criar o cabeçalho
+    doc.text(`Relatório Diario Operacional`, 10, 10)
+    doc.text(`Data: ${formattedDate}`, 10, 20)
 
-doc.text("__________________________________", 10, 25);
+    doc.text("__________________________________", 10, 25);
 
-// Adicionar o texto ao PDF
-doc.setFontSize(13);
-doc.text(message, 10, 40);
-// Salvar o arquivo
+    // Adicionar o texto ao PDF
+    doc.setFontSize(13);
+    doc.text(message, 10, 40);
+    // Salvar o arquivo
 
-if(formattedDate.includes("NaN undefined NaN")) {
+    if (formattedDate.includes("NaN undefined NaN")) {
       Toast.fire({
-      icon: "error",
-      title: "ADICIONE A DATA ANTES DE SALVAR!"
-    });
-  return
-}
+        icon: "error",
+        title: "ADICIONE A DATA ANTES DE SALVAR!"
+      });
+      return
+    }
 
-doc.save(`R.D.O de ${formattedDate}.pdf`);
-Toast.fire({
-  icon: "success",
-  title: "PDF GERADO COM SUCESSO!"
-});
-  
-});
+    doc.save(`R.D.O de ${formattedDate}.pdf`);
+    Toast.fire({
+      icon: "success",
+      title: "PDF GERADO COM SUCESSO!"
+    });
+
+  });
 
 
 

@@ -302,6 +302,65 @@ ${description}
     }
   }
 
+document.getElementById("savePDF").addEventListener("click", () => {
+  
+ const confirmSavePdf = confirm("Deseja  Salvar esse arquivo?")
+ 
+ if(confirmSavePdf === false) return;
+ 
+  const { jsPDF } = window.jspdf; const doc = new jsPDF();
+
+// Capturar o conteúdo desejado
+const executants = Array.from(document.querySelectorAll('.executant'))
+      .map(input => input.value)
+      .filter(value => value.trim() !== '')
+      .join(', ');
+
+    const dateInput = document.getElementById('activityDate').value;
+    const formattedDate = formatDate(dateInput);
+
+    const startTime = document.getElementById('startTime').value;
+    const endTime = document.getElementById('endTime').value;
+    const description = document.getElementById('activityDescription').value;
+
+    const message = `
+
+Executantes:
+${executants.toUpperCase()}
+
+Horários da atividade:
+De ${startTime} às ${endTime}
+
+Tags:
+${getTags.join(", ")}
+
+Descrição:
+${description}
+        `;
+
+// Criar o cabeçalho
+doc.text(`Relatório Diario Operacional`, 10, 10)
+doc.text(`Data: ${formattedDate}`, 10, 20)
+
+doc.text("__________________________________", 10, 25);
+
+// Adicionar o texto ao PDF
+doc.setFontSize(13);
+doc.text(message, 10, 40);
+
+// Salvar o arquivo
+doc.save(`R.D.O de ${formattedDate}.pdf`);
+
+Swal.fire({
+  title: "SUCESSO!",
+  text: "Seu pdf foi gerado com sucesso.",
+  icon: "success"
+});
+  
+});
+
+
+
   function copyToClipboard(text) {
     const textArea = document.createElement('textarea');
     textArea.value = text;

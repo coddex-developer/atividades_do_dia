@@ -143,12 +143,19 @@ textarea {
   color: white;
 }
 
+.savePDF {
+  background-color: #E61C2B;
+  font-weight: 700;
+  color: white;
+}
+
 .startLivePreviewButton {
   font-weight: 700;
 }
 
 .newExecutant i,
 .saveButton i,
+.savePDF i,
 .startLivePreviewButton i {
   font-size: 16pt;
 }

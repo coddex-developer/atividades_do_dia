@@ -1,3 +1,15 @@
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+
 const numberVersion = 48
 
 let getTags = []
@@ -306,7 +318,13 @@ document.getElementById("savePDF").addEventListener("click", () => {
   
  const confirmSavePdf = confirm("Deseja  Salvar esse arquivo?")
  
- if(confirmSavePdf === false) return;
+ if(confirmSavePdf === false) {
+      Toast.fire({
+      icon: "info",
+      title: "AÇÃO FOI CANCELADA"
+    });
+    return
+ };
  
   const { jsPDF } = window.jspdf; const doc = new jsPDF();
 
@@ -347,14 +365,12 @@ doc.text("__________________________________", 10, 25);
 // Adicionar o texto ao PDF
 doc.setFontSize(13);
 doc.text(message, 10, 40);
-
 // Salvar o arquivo
 doc.save(`R.D.O de ${formattedDate}.pdf`);
 
-Swal.fire({
-  title: "SUCESSO!",
-  text: "Seu pdf foi gerado com sucesso.",
-  icon: "success"
+Toast.fire({
+  icon: "success",
+  title: "PDF GERADO COM SUCESSO!"
 });
   
 });

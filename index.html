@@ -6,64 +6,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Formatador de texto para atividades do dia a dia">
   <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="/manifest.json">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/flowbite@1.6.3/dist/flowbite.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <script src="./index.js" type="module" defer></script>
   <title>RELATÓRIO DE MANUTENÇÃO PREVENTIVA</title>
 </head>
 
-<body>
-  <header>
+<body class="bg-gray-100 text-gray-900">
+  <header class="bg-white shadow-md p-4 flex justify-between items-center">
     <a href="#">
-      <img src="./images/logo.png" class="logo" alt="Logo" />
+      <img src="./images/logo.png" class="h-12" alt="Logo" />
     </a>
     <nav class="nav" id="nav">
       <span class="menuButton"></span>
-      <ul id="menu" class="menu">
+      <ul id="menu" class="flex space-x-4">
         <li>
-          <a href="https://wa.me/+5561981323772/?text=Olá+Gabriel+tudo+bem+vim+através+do+seu+aplicativo+R.D.O"><i class="bi bi-whatsapp"></i> Suporte </a>
+          <a href="https://wa.me/+5561981323772/?text=Ol%C3%A1+Gabriel+tudo+bem+vim+atrav%C3%A9s+do+seu+aplicativo+R.D.O" class="flex items-center text-green-600 hover:text-green-800">
+            <i class="bi bi-whatsapp mr-1"></i> Suporte
+          </a>
         </li>
         <li>
-          <a id="sobre" href="#"><i class="bi bi-chat-square-text"></i> Sobre </a>
+          <a id="sobre" href="#" class="flex items-center text-gray-600 hover:text-gray-800">
+            <i class="bi bi-chat-square-text mr-1"></i> Sobre
+          </a>
         </li>
       </ul>
     </nav>
   </header>
-  <div class="obfuscateTheme">
-    <h1>R.D.O</h1>
+  <div class="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+    <h1 class="text-2xl font-bold text-center mb-6">R.D.O</h1>
     <form id="activityForm">
-      <label for="">Executantes da atividade:</label>
-      <div class="boxButtonsExecutants">
-        <button type="button" class="newExecutant"><i class="bi bi-diagram-3"></i> Novo Executante</button>
+      <label class="block text-gray-700">Executantes da atividade:</label>
+      <div class="flex space-x-2 mt-2">
+        <button type="button" class="newExecutant px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+          <i class="bi bi-diagram-3"></i> Novo Executante
+        </button>
       </div>
-      <input class="executant" placeholder="Nome:" value="Gabriel" />
-      <input class="executant" placeholder="Nome:" value="Fábio" />
+      <input class="executant w-full p-2 border rounded mt-2" placeholder="Nome:" value="Gabriel" />
+      <input class="executant w-full p-2 border rounded mt-2" placeholder="Nome:" value="Fábio" />
       <div class="boxDinamicAddExecutants"></div>
-      <div>
-        <label for="activityDate">Data: </label>
-        <input type="date" id="activityDate" class="dataInput" placeholder="Data" />
+      <div class="mt-4">
+        <label for="activityDate" class="block text-gray-700">Data:</label>
+        <input type="date" id="activityDate" class="dataInput w-full p-2 border rounded" />
       </div>
-      <div class="controlTime">
-        <label for="startTime">De </label>
-        <input type="time" id="startTime" value="" />
-        <label for="endTime"> às </label>
-        <input type="time" id="endTime" value="" />
+      <div class="flex space-x-2 mt-4">
+        <label for="startTime">De</label>
+        <input type="time" id="startTime" class="p-2 border rounded" />
+        <label for="endTime">às</label>
+        <input type="time" id="endTime" class="p-2 border rounded" />
       </div>
-      <div><!-- Início do Select -->
-    <label class="labelSelectTags" for="selectTag">Tags:</label>
-    <div class="containerSelect">
-      <select class="selectTag" id="selectTag" name="selectTag">
-        <option value="" selected disabled>Selecione uma opção</option>
-      </select>
-    </div>
-    <div id="display" class="display"></div>
-  </div><!-- Fim do Select -->
-      <label for="activityDescription">Descrição da atividade:</label>
-      <textarea id="activityDescription" rows="8" cols="40"
-        placeholder="Digite aqui a atividade ou ocorrencia..">ATIVIDADE: Manutenção Preventiva
+      <div class="mt-4">
+        <label class="block text-gray-700">Tags:</label>
+        <select id="selectTag" class="selectTag w-full p-2 border rounded">
+          <option value="" selected disabled>Selecione uma opção</option>
+        </select>
+        <div id="display" class="display mt-2"></div>
+      </div>
+      <label for="activityDescription" class="block text-gray-700 mt-4">Descrição da atividade:</label>
+      <textarea id="activityDescription" rows="8" class="w-full p-2 border rounded mt-2" placeholder="Digite aqui a atividade ou ocorrência..">ATIVIDADE: Manutenção Preventiva
 SETOR:
-      
+
 _________________________
 
 TST/Liberador:
@@ -102,13 +105,18 @@ _________________________
 
 📌 OBSERVAÇÕES:
 _________________________</textarea>
-      <button type="button" id="saveButton" class="saveButton"><i class="bi bi-folder-plus"></i> Salvar</button>
-      <button type="button" id="startLivePreviewButton" class="startLivePreviewButton"><i class="bi bi-view-list"></i>
-        Pré visualizar</button>
+      <div class="flex space-x-2 mt-4">
+        <button type="button" id="saveButton" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+          <i class="bi bi-folder-plus"></i> Salvar
+        </button>
+        <button type="button" id="startLivePreviewButton" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">
+          <i class="bi bi-view-list"></i> Pré visualizar
+        </button>
+      </div>
     </form>
   </div>
-  <div class="livePreview" id="livePreview"></div>
-  <footer>
+  <div class="livePreview mt-10" id="livePreview"></div>
+  <footer class="text-center text-gray-600 mt-10 p-4">
     <p class="versionDisplay" id="versionDisplay"></p>
   </footer>
 </body>

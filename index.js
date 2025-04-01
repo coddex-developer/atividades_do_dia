@@ -144,8 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Resto do seu código existente...
-
   const obfuscateTheme = document.querySelector('.obfuscateTheme');
   const form = document.getElementById('activityForm');
   const newExecutantButton = document.querySelector('.newExecutant');
@@ -299,7 +297,7 @@ De ${startTime} às ${endTime}
 ${getTags.join(", ")}
 
 *Descrição:*
-${description}
+${description.toUpperCase()}
         `;
 
     if (formattedDate.includes("NaN undefined NaN")) {
@@ -324,18 +322,20 @@ ${description}
   }
 
   document.getElementById("savePDF").addEventListener("click", () => {
+    const confirmSavePdf = confirm("Deseja Salvar esse arquivo?");
 
-    const confirmSavePdf = confirm("Deseja  Salvar esse arquivo?")
-
-    if (confirmSavePdf === false) {
+    if (!confirmSavePdf) {
       Toast.fire({
         icon: "info",
         title: "AÇÃO FOI CANCELADA"
       });
-      return
-    };
+      return;
+    }
 
-    const { jsPDF } = window.jspdf; const doc = new jsPDF();
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const margin = 10; // Margem para evitar sobreposição
+    const pageWidth = doc.internal.pageSize.getWidth() - 2 * margin;
 
     // Capturar o conteúdo desejado
     const executants = Array.from(document.querySelectorAll('.executant'))
@@ -350,38 +350,26 @@ ${description}
     const endTime = document.getElementById('endTime').value;
     const description = document.getElementById('activityDescription').value;
 
-    const message = `
-
-Executantes:
-${executants.toUpperCase()}
-
-Horários da atividade:
-De ${startTime} às ${endTime}
-
-Tags:
-${getTags.join(", ")}
-
-Descrição:
-${description}
-        `;
+    const message = `Executantes:\n${executants.toUpperCase()}\n\nHorários da atividade:\nDe ${startTime} às ${endTime}\n\nTags:\n${getTags.join(", ")}\n\nDescrição:\n${description.toUpperCase()}`;
 
     // Criar o cabeçalho
-    doc.text(`Relatório Diario Operacional`, 10, 10)
-    doc.text(`Data: ${formattedDate}`, 10, 20)
+    doc.setFontSize(14);
+    doc.text("Relatório Diário Operacional", margin, margin);
+    doc.setFontSize(12);
+    doc.text(`Data: ${formattedDate}`, margin, margin + 10);
+    doc.text("________________________________________________________________________________", margin, margin + 15);
 
-    doc.text("__________________________________", 10, 25);
-
-    // Adicionar o texto ao PDF
-    doc.setFontSize(13);
-    doc.text(message, 10, 40);
-    // Salvar o arquivo
+    // Adicionar o texto ao PDF com quebra automática
+    doc.setFontSize(11);
+    const wrappedText = doc.splitTextToSize(message, pageWidth);
+    doc.text(wrappedText, margin, margin + 30);
 
     if (formattedDate.includes("NaN undefined NaN")) {
       Toast.fire({
         icon: "error",
         title: "ADICIONE A DATA ANTES DE SALVAR!"
       });
-      return
+      return;
     }
 
     doc.save(`R.D.O de ${formattedDate}.pdf`);
@@ -391,6 +379,7 @@ ${description}
     });
 
   });
+
 
 
 
@@ -434,7 +423,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 document.getElementById("sobre").addEventListener('click', () => {
-  alert(`Este aplicativo permite que você organize e registre seu dia de forma prática e eficiente. Com ele, você pode descrever suas atividades diárias por meio de um formatador de texto intuitivo, facilitando o acompanhamento e o salvamento das informações de maneira clara e organizada.
+  const textInfo = `Este aplicativo permite que você organize e registre seu dia de forma prática e eficiente. Com ele, você pode descrever suas atividades diárias por meio de um formatador de texto intuitivo, facilitando o acompanhamento e o salvamento das informações de maneira clara e organizada.
 
-Caso tenha dúvidas ou encontre algum problema, envie seu feedback. Sua opinião é muito importante para melhorarmos ainda mais o aplicativo!`)
+Caso tenha dúvidas ou encontre algum problema, envie seu feedback. Sua opinião é muito importante para melhorarmos ainda mais o aplicativo!`;
+
+  Swal.fire({ text: textInfo });
 })

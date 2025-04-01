@@ -12,6 +12,7 @@
   <!-- Tailwind CSS & Flowbite -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
@@ -23,7 +24,7 @@
           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">R.D.O</span>
         </a>
         <button id="themeToggle" class="text-gray-500 dark:text-white text-2xl p-2 rounded-lg">
-          <i id="themeIcon" class="bi bi-circle-half"></i>
+          <i id="themeIcon" class="bi bi-sun"></i>
         </button>
       </div>
     </nav>
@@ -34,10 +35,10 @@
     <form id="activityForm" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 mt-6">
       <label class="block mb-2 text-sm font-medium">Executantes da atividade:</label>
       <div class="mb-4">
-        <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 flex items-center gap-2"><i class="bi bi-diagram-3"></i> Novo Executante</button>
+        <button type="button" class="newExecutant bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 flex items-center gap-2"><i class="bi bi-diagram-3"></i> Novo Executante</button>
       </div>
-      <input class="block w-full p-2 mb-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700" placeholder="Nome:" value="Gabriel" />
-      <input class="block w-full p-2 mb-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700" placeholder="Nome:" value="Fábio" />
+      <input class="block w-full p-2 mb-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 executant" placeholder="Nome:" value="Gabriel" />
+      <input class="block w-full p-2 mb-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 executant" placeholder="Nome:" value="Fábio" />
       <div class="boxDinamicAddExecutants"></div>
 
       <div class="mb-4">
@@ -64,26 +65,7 @@
       </div>
 
       <label class="block text-sm font-medium">Descrição da atividade:</label>
-      <textarea id="activityDescription" rows="8" class="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Digite aqui a atividade ou ocorrência..">•ATIVIDADE: MANUTENÇÃO PREVENTIVA
-__________________________________
-•SETOR: 
-__________________________________
-•TST/LIBERADOR: 
-__________________________________
-•ELETRICISTA: 
-__________________________________
-•DDS: 07:40
-__________________________________
-•DESLOCAMENTO DE FERRAMENTAS E ISOLAMENTO DA ÁREA: 08:00 às 00:00
-__________________________________
-•AGUARDANDO LIBERAÇÃO: 00:00 às 00:00
-__________________________________
-•INÍCIO DAS ATIVIDADES: 00:00
-__________________________________
-•FIM DAS ATIVIDADES: 16:20
-__________________________________
-•OBSERVAÇÕES: 
-__________________________________</textarea>
+      <textarea id="activityDescription" rows="8" class="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
 
       <div class="mt-4 flex space-x-4">
         <button type="button" id="saveButton" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 flex items-center gap-2"><i class="bi bi-folder-plus"></i> Salvar</button>

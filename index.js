@@ -336,7 +336,7 @@ const executants = Array.from(document.querySelectorAll('.executant'))
 
     const dateInput = document.getElementById('activityDate').value;
     const formattedDate = formatDate(dateInput);
-
+    
     const startTime = document.getElementById('startTime').value;
     const endTime = document.getElementById('endTime').value;
     const description = document.getElementById('activityDescription').value;
@@ -366,8 +366,16 @@ doc.text("__________________________________", 10, 25);
 doc.setFontSize(13);
 doc.text(message, 10, 40);
 // Salvar o arquivo
-doc.save(`R.D.O de ${formattedDate}.pdf`);
 
+if(formattedDate.includes("NaN undefined NaN")) {
+      Toast.fire({
+      icon: "error",
+      title: "ADICIONE A DATA ANTES DE SALVAR!"
+    });
+  return
+}
+
+doc.save(`R.D.O de ${formattedDate}.pdf`);
 Toast.fire({
   icon: "success",
   title: "PDF GERADO COM SUCESSO!"

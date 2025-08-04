@@ -1,4 +1,5 @@
 const tags = [
+  "AR01","AR02", "AR03", "AR04", "AR05", "AR06", "AR06", "AR07", "AR08", "AR09", "AR10", "AR11", "AR12",
   "CA-01", "CA-02", "CA-03",
   "HSS-AC 01", "HSS-AC 02", "HSS-AC 03", "HSS-AC 04", "HSS-AC 05", "HSS-AC 06",
   "AC-01", "AC-02", "AC-03", "AC-04", "AC-05", "AC-06", "AC-07", "AC-08", "AC-09", "AC-010",

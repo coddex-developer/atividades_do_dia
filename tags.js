@@ -5,7 +5,7 @@ const tags = [
   "CA-01", "CA-02", "CA-03",
   "---CCM NORTE E SUL---",
   "HSS-AC 01", "HSS-AC 02", "HSS-AC 03", "HSS-AC 04", "HSS-AC 05", "HSS-AC 06",
-  "---PLANTA DA UNIDADE---"
+  "---PLANTA DA UNIDADE---",
   "AC-01", "AC-02", "AC-03", "AC-04", "AC-05", "AC-06", "AC-07", "AC-08", "AC-09", "AC-010",
   "AC-011", "AC-012", "AC-013", "AC-014", "AC-015", "AC-016", "AC-017", "AC-018", "AC-019", "AC-020",
   "AC-021", "AC-022", "AC-023", "AC-024", "AC-025", "AC-026", "AC-027", "AC-028", "AC-029", "AC-030",

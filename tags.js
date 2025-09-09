@@ -1,6 +1,6 @@
 const tags = [
   "---SETOR DA 300---",
-  "AR01","AR02", "AR03", "AR04", "AR05", "AR06", "AR06", "AR07", "AR08", "AR09", "AR10", "AR11", "AR12",
+  "AR01","AR02", "AR03", "AR04", "AR05", "AR06", "AR06", "AR07", "AR08", "AR09", "AR10", "AR11", "AR12", "AR13", "AR14", "AR15",
   "---CORTINAS DE AR---",
   "CA-01", "CA-02", "CA-03",
   "---CCM NORTE E SUL---",

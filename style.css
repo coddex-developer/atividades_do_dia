@@ -152,7 +152,7 @@ textarea {
 
 .startLivePreviewButton {
   font-weight: 700;
-  visibility: invisivle;
+  visibility: hidden;
 }
 
 .newExecutant i,

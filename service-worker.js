@@ -1,4 +1,4 @@
-const CACHE_NAME = 'offline-cache-v1.3.32';
+const CACHE_NAME = 'offline-cache-v1.3.33';
 const urlsToCache = [
   '/',
   '/index.html',
